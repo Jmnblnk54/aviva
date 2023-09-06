@@ -7,10 +7,15 @@ const Footer = () => {
         <span>© Copyright </span>
         <span>{new Date().getFullYear()}</span>
         <span>
-          <a href="https://avivapa.com/"> Aviva Insurance Adjusters & </a>
+          <a className="footer-links" href="https://avivapa.com/">
+            {" "}
+            Aviva Insurance Adjusters &{" "}
+          </a>
         </span>
         <span>
-          <a href="https://www.blankdigitaldesign.com">Blank Digital Design </a>
+          <a className="footer-links" href="https://www.blankdigitaldesign.com">
+            Blank Digital Design{" "}
+          </a>
         </span>
       </p>
     </footer>
