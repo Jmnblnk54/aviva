@@ -44,7 +44,6 @@ const ContactForm = () => {
         <form onSubmit={formik.handleSubmit}>
           <Row className="row">
             <Field
-              fullWidth
               id="name"
               name="name"
               label="Name"
@@ -57,7 +56,6 @@ const ContactForm = () => {
           </Row>
           <Row className="row">
             <Field
-              fullWidth
               id="email"
               name="email"
               label="Email"
@@ -71,7 +69,6 @@ const ContactForm = () => {
           </Row>
           <Row className="row">
             <Field
-              fullWidth
               id="phone"
               name="phone"
               label="Phone"
@@ -104,7 +101,7 @@ const ContactForm = () => {
               </label>
             </Row>
           </div>
-          <Button color="primary" variant="contained" fullWidth type="submit">
+          <Button className="submit-button" variant="danger" type="submit">
             Submit
           </Button>
         </form>

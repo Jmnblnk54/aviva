@@ -23,13 +23,13 @@ const Main = () => {
         <div className="background-img-container">
           <img
             src={backgroundImg}
-            alt="flood waters from hurricane"
+            alt="flood waters from hurricane by Kelly Sikkema"
             className="background-img"
           />
         </div>
 
         <div className="headline">
-          <h3>HURRICANE IDALIA DAMAGE</h3>
+          <h1>HURRICANE IDALIA DAMAGE</h1>
         </div>
         <div className="form-section">
           <ContactForm />

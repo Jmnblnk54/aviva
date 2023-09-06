@@ -5,9 +5,21 @@
   border: 1px solid #800b0b;
 }
 
+.form-header {
+  color: #800b0b;
+  width: 50%;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
 .row {
   justify-content: start;
-  margin: 5px;
+  margin-bottom: 20px;
+}
+
+.submit-button {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 @media (min-width: 600px) {
