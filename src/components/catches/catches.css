@@ -1,0 +1,7 @@
+.catches-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 40px;
+  background-color: #668cff;
+}
