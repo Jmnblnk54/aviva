@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import { useFormik, Field, Form, FormikProvider } from "formik";
 import * as yup from "yup";
@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./contactForm.css";
+import emailjs from "@emailjs/browser";
 
 const validationSchema = yup.object({
   email: yup
@@ -19,9 +20,27 @@ const validationSchema = yup.object({
 const ContactForm = () => {
   const [phoneValue, setPhoneValue] = useState("");
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const form = useRef();
+
+  const handleSubmit = () => {
+    emailjs
+      .sendForm(
+        "service_plvaz67",
+        "template_ubk4x74",
+        form.current,
+        "rrHhNUL715vcDCGpc"
+      )
+      .then(
+        (response) => {
+          console.log("SUCCESS", response.status, response.text);
+          // setShowAlert(true);
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        }
+      );
   };
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -42,44 +61,48 @@ const ContactForm = () => {
           <h2>Free Policy Review & Claim Assessment!</h2>
         </div>
         <form onSubmit={formik.handleSubmit}>
-          <Row className="row">
-            <Field
-              id="name"
-              name="name"
-              label="Name"
-              value={formik.values.name}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.name && Boolean(formik.errors.name)}
-              helperText={formik.touched.name && formik.errors.name}
-            />
-          </Row>
-          <Row className="row">
-            <Field
-              id="email"
-              name="email"
-              label="Email"
-              type="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-            />
-          </Row>
-          <Row className="row">
-            <Field
-              id="phone"
-              name="phone"
-              label="Phone"
-              type="phone"
-              value={formik.values.phone}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.phone && Boolean(formik.errors.phone)}
-              helperText={formik.touched.phone && formik.errors.phone}
-            />
-          </Row>
+          <div className="row-group1">
+            <Row className="input-row">
+              <Field
+                className="input-field"
+                id="name"
+                name="name"
+                placeholder="Name"
+                // value={formik.values.name}
+                // onChange={formik.handleChange}
+                // onBlur={formik.handleBlur}
+                // error={formik.touched.name && Boolean(formik.errors.name)}
+                // helperText={formik.touched.name && formik.errors.name}
+              />
+            </Row>
+            <Row className="input-row">
+              <Field
+                // className="input-field"
+                id="email"
+                name="email"
+                placeholder="Email"
+                type="email"
+                // value={formik.values.email}
+                // onChange={formik.handleChange}
+                // onBlur={formik.handleBlur}
+                // error={formik.touched.email && Boolean(formik.errors.email)}
+                // helperText={formik.touched.email && formik.errors.email}
+              />
+            </Row>
+            <Row className="input-row">
+              <Field
+                placeholder="Phone"
+                id="phone"
+                name="phone"
+                type="phone"
+                // value={formik.values.phone}
+                // onChange={formik.handleChange}
+                // onBlur={formik.handleBlur}
+                // error={formik.touched.phone && Boolean(formik.errors.phone)}
+                // helperText={formik.touched.phone && formik.errors.phone}
+              />
+            </Row>
+          </div>
 
           <div role="group" aria-labelledby="checkbox-group">
             <Row className="row">

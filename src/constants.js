@@ -1,3 +1,9 @@
-export const bullet1 = "We only charge fees if you receive compensation.";
-
-export const bullet2 = "Se habla español.";
+export const bulletArray = [
+  "Over 16 years experience",
+  "We only charge fees if you receive compensation.",
+  "On average clients receive 200% - 500% more than through insurance.",
+  "Advanced payments available",
+  "360 degree camera walk through so nothing gets left out.",
+  "Free policy reviews",
+  "Se habla español.",
+];

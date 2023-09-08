@@ -5,31 +5,15 @@ import Catches from "../../components/catches/Catches";
 import Footer from "../../components/footer/Footer";
 import backgroundImg from "../../assets/flood1.jpg";
 import ContactForm from "../../components/contactForm/ContactForm";
+import Bullets from "../../components/bullets/Bullets";
 
 const Main = () => {
-  const [open, setOpen] = useState(false);
-
-  const handleModalOpen = () => {
-    setOpen(true);
-  };
-
-  const handleModalClose = () => {
-    setOpen(false);
-  };
   return (
     <div className="main-container">
       <Header />
       <div className="hero-container">
-        <div className="background-img-container">
-          <img
-            src={backgroundImg}
-            alt="flood waters from hurricane by Kelly Sikkema"
-            className="background-img"
-          />
-        </div>
-
-        <div className="headline">
-          <h1>HURRICANE IDALIA DAMAGE</h1>
+        <div className="bullets-section">
+          <Bullets />
         </div>
         <div className="form-section">
           <ContactForm />

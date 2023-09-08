@@ -3,17 +3,35 @@
   display: flex;
   flex-direction: column;
   border: 1px solid #800b0b;
+  height: 100%;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .form-header {
   color: #800b0b;
-  width: 50%;
+  width: 60%;
   margin-top: 10px;
   margin-bottom: 20px;
 }
 
+.row-group1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input-row {
+  justify-content: center;
+  /* width: 80%; */
+  margin-bottom: 20px;
+}
+
 .row {
-  justify-content: start;
   margin-bottom: 20px;
 }
 
@@ -24,7 +42,7 @@
 
 @media (min-width: 600px) {
   .form-container {
-    margin-right: 25px;
+    /* margin-right: 25px; */
     align-items: center;
   }
 }
