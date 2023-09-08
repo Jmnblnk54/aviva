@@ -13,8 +13,9 @@ form {
 }
 
 .form-header {
+  display: flex;
+  justify-content: center;
   color: #800b0b;
-  width: 60%;
   margin-top: 10px;
   margin-bottom: 20px;
 }
@@ -27,8 +28,8 @@ form {
 
 .input-row {
   justify-content: center;
-  /* width: 80%; */
   margin-bottom: 20px;
+  margin: 0 10px;
 }
 
 .row {
@@ -37,12 +38,11 @@ form {
 
 .submit-button {
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin: 0 10px 20px 10px;
 }
 
 @media (min-width: 600px) {
   .form-container {
-    /* margin-right: 25px; */
     align-items: center;
   }
 }

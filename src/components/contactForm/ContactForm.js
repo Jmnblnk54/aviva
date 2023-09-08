@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
-import ReactDOM from "react-dom";
-import { useFormik, Field, Form, FormikProvider } from "formik";
+import { useFormik, Field, FormikProvider } from "formik";
 import * as yup from "yup";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -69,40 +68,13 @@ const ContactForm = () => {
                 id="name"
                 name="name"
                 placeholder="Name"
-                // value={formik.values.name}
-                // onChange={formik.handleChange}
-                // onBlur={formik.handleBlur}
-                // error={formik.touched.name && Boolean(formik.errors.name)}
-                // helperText={formik.touched.name && formik.errors.name}
               />
             </Row>
             <Row className="input-row">
-              <Field
-                // className="input-field"
-                id="email"
-                name="email"
-                placeholder="Email"
-                type="email"
-                // value={formik.values.email}
-                // onChange={formik.handleChange}
-                // onBlur={formik.handleBlur}
-                // error={formik.touched.email && Boolean(formik.errors.email)}
-                // helperText={formik.touched.email && formik.errors.email}
-              />
+              <Field id="email" name="email" placeholder="Email" type="email" />
             </Row>
             <Row className="input-row">
               <PhoneNumberInput />
-              {/* <Field
-                placeholder="Phone"
-                id="phone"
-                name="phone"
-                type="phone" */}
-              {/* // value={formik.values.phone}
-                // onChange={formik.handleChange}
-                // onBlur={formik.handleBlur}
-                // error={formik.touched.phone && Boolean(formik.errors.phone)}
-                // helperText={formik.touched.phone && formik.errors.phone} */}
-              {/* /> */}
             </Row>
           </div>
 

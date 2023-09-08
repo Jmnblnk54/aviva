@@ -25,16 +25,12 @@
 
 .catches-section {
   width: 100vw;
-  /* height: 100%; */
-  /* margin-top: 5px; */
   margin-bottom: 50px;
 }
 
 .footer-section {
-  margin-top: 10px;
   width: 100vw;
-  /* height: 100%; */
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   right: 0;
@@ -51,9 +47,16 @@
     width: 50vw;
   }
 
+  .catches-section {
+    margin-bottom: 0;
+  }
+
+  .footer-section {
+    position: fixed;
+  }
+
   .bullets-section {
     height: 100%;
-
     width: 50vw;
   }
 }
