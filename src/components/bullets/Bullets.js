@@ -9,8 +9,8 @@ const Bullets = () => {
         <h1>HURRICANE IDALIA DAMAGE</h1>
       </div>
       <div className="bullet-points">
-        {bulletArray.map((bullet) => (
-          <Row>
+        {bulletArray.map((bullet, idx) => (
+          <Row key={idx}>
             <Col sm={2}>●</Col>
             <Col sm={10}>
               <h3>{bullet}</h3>
