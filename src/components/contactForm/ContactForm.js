@@ -7,6 +7,7 @@ import Row from "react-bootstrap/Row";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./contactForm.css";
 import emailjs from "@emailjs/browser";
+import PhoneNumberInput from "../PhoneInput";
 
 const validationSchema = yup.object({
   email: yup
@@ -90,17 +91,18 @@ const ContactForm = () => {
               />
             </Row>
             <Row className="input-row">
-              <Field
+              <PhoneNumberInput />
+              {/* <Field
                 placeholder="Phone"
                 id="phone"
                 name="phone"
-                type="phone"
-                // value={formik.values.phone}
+                type="phone" */}
+              {/* // value={formik.values.phone}
                 // onChange={formik.handleChange}
                 // onBlur={formik.handleBlur}
                 // error={formik.touched.phone && Boolean(formik.errors.phone)}
-                // helperText={formik.touched.phone && formik.errors.phone}
-              />
+                // helperText={formik.touched.phone && formik.errors.phone} */}
+              {/* /> */}
             </Row>
           </div>
 

@@ -9,21 +9,25 @@ import Bullets from "../../components/bullets/Bullets";
 
 const Main = () => {
   return (
-    <div className="main-container">
-      <Header />
-      <div className="hero-container">
-        <div className="bullets-section">
-          <Bullets />
+    <>
+      <div className="main-container">
+        <Header />
+        <div className="hero-container">
+          <div className="bullets-section">
+            <Bullets />
+          </div>
+          <div className="form-section">
+            <ContactForm />
+          </div>
         </div>
-        <div className="form-section">
-          <ContactForm />
+        <div className="catches-section">
+          <Catches />
         </div>
       </div>
-      <div className="catches-section">
-        <Catches />
+      <div className="footer-section">
+        <Footer />
       </div>
-      <Footer />
-    </div>
+    </>
   );
 };
 
