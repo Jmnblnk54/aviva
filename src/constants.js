@@ -1,9 +1,9 @@
 export const bulletArray = [
-  "Over 16 years experience",
-  "We only charge fees if you receive compensation.",
-  "On average clients receive 200% - 500% more than through insurance.",
-  "Advanced payments available",
-  "360 degree camera walk through so nothing gets left out.",
-  "Free policy reviews",
-  "Se habla español.",
+  "Over 16 years experience dealing with claims",
+  "We only charge a fee if we win, no risk to you",
+  "On average client receive 200%-500% more money",
+  "Assistance with advanced funding from FEMA",
+  "360 degree guarantees nothing gets overlooked",
+  "Free policy review to establish coverage eligibility",
+  "No English, No problem, Hablamos Español",
 ];
