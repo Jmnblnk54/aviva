@@ -6,6 +6,7 @@
 }
 
 .hero-container {
+  background-color: #a0a0a0;
   object-fit: contain;
   display: flex;
   flex-direction: column;

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useFormik, Field, FormikProvider } from "formik";
 import * as yup from "yup";
 import Button from "react-bootstrap/Button";
@@ -7,6 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./contactForm.css";
 import emailjs from "@emailjs/browser";
 import PhoneNumberInput from "../PhoneInput";
+import Form from "react-bootstrap/Form";
+import { renter } from "../../constants";
 
 const validationSchema = yup.object({
   email: yup
@@ -19,8 +21,17 @@ const validationSchema = yup.object({
 
 const ContactForm = () => {
   const [phoneValue, setPhoneValue] = useState("");
+  const [clientType, setClientType] = useState(0);
 
   const form = useRef();
+
+  const handleSelect = (e) => {
+    setClientType(parseInt(e.target.value));
+  };
+
+  useEffect(() => {
+    console.log(clientType);
+  }, [clientType]);
 
   const handleSubmit = () => {
     emailjs
@@ -58,50 +69,70 @@ const ContactForm = () => {
     <FormikProvider value={formik}>
       <div className="form-container">
         <div className="form-header">
-          <h2>Free Policy Review & Claim Assessment!</h2>
+          <Form.Select
+            onChange={handleSelect}
+            aria-label="Default select example"
+          >
+            <option value={0}>I Am A ...</option>
+            <option value={1}>Renter</option>
+            <option value={2}>Homeowner</option>
+          </Form.Select>
         </div>
-        <form onSubmit={formik.handleSubmit}>
-          <div className="row-group1">
-            <Row className="input-row">
-              <Field
-                className="input-field"
-                id="name"
-                name="name"
-                placeholder="Name"
-              />
-            </Row>
-            <Row className="input-row">
-              <Field id="email" name="email" placeholder="Email" type="email" />
-            </Row>
-            <Row className="input-row">
-              <PhoneNumberInput />
-            </Row>
+        {clientType === 0 && (
+          <div className="none-selected">
+            <h6>Please Select Your Housing Situation</h6>
           </div>
+        )}
+        {clientType === 1 && <h6>{renter}</h6>}
+        {clientType === 2 && (
+          <form className="form-main" onSubmit={formik.handleSubmit}>
+            <div className="row-group1">
+              <Row className="input-row">
+                <Field
+                  className="input-field"
+                  id="name"
+                  name="name"
+                  placeholder="Name"
+                />
+              </Row>
+              <Row className="input-row">
+                <Field
+                  id="email"
+                  name="email"
+                  placeholder="Email"
+                  type="email"
+                />
+              </Row>
+              <Row className="input-row">
+                <PhoneNumberInput />
+              </Row>
+            </div>
 
-          <div role="group" aria-labelledby="checkbox-group">
-            <Row className="row">
-              <label>
-                <Field type="checkbox" name="checked" value="One" />
-                My property suffered damages from Hurricane Idalia.
-              </label>
-            </Row>
-            <Row className="row">
-              <label>
-                <Field type="checkbox" name="checked" value="Two" />
-                My house was flooded from Hurricane Idalia.
-              </label>
-            </Row>
-            <Row className="row">
-              <label>
-                <Field type="checkbox" name="checked" value="Three" />
-                My roof is leaking or damaged from Hurricane Idalia.
-              </label>
-            </Row>
-          </div>
-          <Button className="submit-button" variant="danger" type="submit">
-            Submit
-          </Button>
-        </form>
+            <div role="group" aria-labelledby="checkbox-group">
+              <Row className="row">
+                <label>
+                  <Field type="checkbox" name="checked" value="One" />
+                  My property suffered damages from Hurricane Idalia.
+                </label>
+              </Row>
+              <Row className="row">
+                <label>
+                  <Field type="checkbox" name="checked" value="Two" />
+                  My house was flooded from Hurricane Idalia.
+                </label>
+              </Row>
+              <Row className="row">
+                <label>
+                  <Field type="checkbox" name="checked" value="Three" />
+                  My roof is leaking or damaged from Hurricane Idalia.
+                </label>
+              </Row>
+            </div>
+            <Button className="submit-button" variant="danger" type="submit">
+              Submit
+            </Button>
+          </form>
+        )}
       </div>
     </FormikProvider>
   );

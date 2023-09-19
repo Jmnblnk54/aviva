@@ -1,6 +1,6 @@
 .bullets-container {
   height: 100%;
-  background-image: url("../../assets/wind.jpg");
+  /* background-image: url("../../assets/wind.jpg"); */
   background-repeat: no-repeat;
   background-size: cover;
 }

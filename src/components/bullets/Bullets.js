@@ -3,7 +3,7 @@ import "./bullets.css";
 import { Row, Col } from "react-bootstrap";
 import { FaWind } from "react-icons/fa";
 
-const Bullets = () => {
+const Bullets = ({ handleModalClose, handleModalOpen }) => {
   return (
     <div className="bullets-container">
       <div className="title">
@@ -20,6 +20,11 @@ const Bullets = () => {
             </Col>
           </Row>
         ))}
+        <Row>
+          <button onClick={handleModalOpen} className="modal-button">
+            I NEED TO PLACE A HURRICANE IDALIA CLAIM
+          </button>
+        </Row>
       </div>
     </div>
   );

@@ -8,13 +8,23 @@ import ContactForm from "../../components/contactForm/ContactForm";
 import Bullets from "../../components/bullets/Bullets";
 
 const Main = () => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleModalOpen = () => {
+    setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
+  };
+
   return (
     <>
       <div className="main-container">
         <Header />
         <div className="hero-container">
           <div className="bullets-section">
-            <Bullets />
+            <Bullets {...{ handleModalClose, handleModalOpen }} />
           </div>
           <div className="form-section">
             <ContactForm />
