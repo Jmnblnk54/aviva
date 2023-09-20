@@ -9,6 +9,7 @@ import emailjs from "@emailjs/browser";
 import PhoneNumberInput from "../PhoneInput";
 import Form from "react-bootstrap/Form";
 import { renter } from "../../constants";
+import reCAPTCHA, { ReCAPTCHA } from "react-google-recaptcha";
 
 const validationSchema = yup.object({
   email: yup
@@ -29,11 +30,28 @@ const ContactForm = () => {
     setClientType(parseInt(e.target.value));
   };
 
+  // function onClick(e) {
+  //   e.preventDefault();
+  //   grecaptcha.enterprise.ready(async () => {
+  //     const token = await grecaptcha.enterprise.execute(
+  //       "6LcPrjwoAAAAAKYoIQQ8WmhNO-awerPB7UUXghNH",
+  //       { action: "LOGIN" }
+  //     );
+  //   });
+  // }
+
   useEffect(() => {
     console.log(clientType);
   }, [clientType]);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    // e.preventDefault();
+    // grecaptcha.enterprise.ready(async () => {
+    //   const token = await grecaptcha.enterprise.execute(
+    //     "6LcPrjwoAAAAAKYoIQQ8WmhNO-awerPB7UUXghNH",
+    //     { action: "LOGIN" }
+    //   );
+    // });
     emailjs
       .sendForm(
         "service_plvaz67",
@@ -128,6 +146,7 @@ const ContactForm = () => {
                 </label>
               </Row>
             </div>
+            <ReCAPTCHA siteKey={process.env.REACT_APP_KEY} />
             <Button className="submit-button" variant="danger" type="submit">
               Submit
             </Button>
