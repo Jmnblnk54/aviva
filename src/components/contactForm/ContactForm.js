@@ -146,7 +146,7 @@ const ContactForm = () => {
                 </label>
               </Row>
             </div>
-            <ReCAPTCHA siteKey={process.env.REACT_APP_KEY} />
+            <ReCAPTCHA siteKey="6LcPrjwoAAAAAKYoIQQ8WmhNO-awerPB7UUXghNH" />
             <Button className="submit-button" variant="danger" type="submit">
               Submit
             </Button>
