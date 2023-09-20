@@ -125,6 +125,7 @@ const ContactForm = () => {
                 <PhoneNumberInput />
               </Row>
             </div>
+            <ReCAPTCHA siteKey="6LcPrjwoAAAAAKYoIQQ8WmhNO-awerPB7UUXghNH" />
 
             <div role="group" aria-labelledby="checkbox-group">
               <Row className="row">
