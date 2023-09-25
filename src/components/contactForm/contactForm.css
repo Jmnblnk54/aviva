@@ -20,6 +20,13 @@ form {
   margin-bottom: 20px;
 }
 
+.renter {
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
 .form-main {
   width: 300px;
   background-color: red;
@@ -36,6 +43,9 @@ form {
   justify-content: start;
   margin-bottom: 20px;
   margin: 0 10px;
+}
+
+.check-boxes {
 }
 
 .row {

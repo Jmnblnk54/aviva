@@ -6,5 +6,23 @@
 }
 
 .bullet-points {
+  margin-right: 10px;
+  margin-left: 10px;
   color: #fff;
+}
+
+.wind-bullet {
+  color: blue;
+}
+
+.modal-button {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+@media (min-width: 600px) {
+  .bullet-points {
+    margin-right: 200px;
+    margin-left: 200px;
+  }
 }

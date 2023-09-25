@@ -19,11 +19,6 @@
   justify-content: center;
 }
 
-.form-section {
-  width: 100vw;
-  height: 100%;
-}
-
 .catches-section {
   width: 100vw;
   margin-bottom: 50px;
@@ -39,8 +34,8 @@
 
 @media (min-width: 600px) {
   .hero-container {
-    flex-direction: row;
-    height: 500px;
+    /* flex-direction: row; */
+    height: 650px;
   }
 
   .form-section {
@@ -58,6 +53,6 @@
 
   .bullets-section {
     height: 100%;
-    width: 50vw;
+    /* width: 50vw; */
   }
 }

@@ -13,7 +13,7 @@ const Bullets = ({ handleModalClose, handleModalOpen }) => {
         {bulletArray.map((bullet, idx) => (
           <Row key={idx}>
             <Col sm={2}>
-              <FaWind />
+              <FaWind className="wind-bullet" />
             </Col>
             <Col sm={10}>
               <h3>{bullet}</h3>

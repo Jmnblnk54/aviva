@@ -8,5 +8,4 @@ export const bulletArray = [
   "No English, No problem, Hablamos Español",
 ];
 
-export const renter =
-  "I am very sorry you are experiencing hardship due to Hurricane Idalia. I invite you to go to the FEMA website where you may be eligible for several different grants that you do not have to pay back. Some of those FEMA grants include but are not limited to grants for housing. Please visit https://www.disasterassistance.gov/ for more information and to apply for assistance.";
+export const renter = `I am very sorry you are experiencing hardship due to Hurricane Idalia. I invite you to go to the FEMA website where you may be eligible for several different grants that you do not have to pay back. Some of those FEMA grants include but are not limited to grants for housing. Please visit <a href="https://www.disasterassistance.gov/">HERE</a> for more information and to apply for assistance.`;

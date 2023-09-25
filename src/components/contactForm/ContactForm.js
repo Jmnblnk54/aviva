@@ -101,7 +101,23 @@ const ContactForm = () => {
             <h6>Please Select Your Housing Situation</h6>
           </div>
         )}
-        {clientType === 1 && <h6>{renter}</h6>}
+        {clientType === 1 && (
+          <div className="renter">
+            <p className="renter">
+              <span>
+                I am very sorry you are experiencing hardship due to Hurricane
+                Idalia. I invite you to go to the FEMA website where you may be
+                eligible for several different grants that you do not have to
+                pay back. Some of those FEMA grants include but are not limited
+                to grants for housing. Please click the button below for more
+                information and to apply for assistance.
+              </span>
+            </p>
+            <p>
+              <a href="https://www.disasterassistance.gov/">HERE</a>
+            </p>
+          </div>
+        )}
         {clientType === 2 && (
           <form className="form-main" onSubmit={formik.handleSubmit}>
             <div className="row-group1">
@@ -127,7 +143,11 @@ const ContactForm = () => {
             </div>
             <ReCAPTCHA siteKey="6LcPrjwoAAAAAKYoIQQ8WmhNO-awerPB7UUXghNH" />
 
-            <div role="group" aria-labelledby="checkbox-group">
+            <div
+              className="check-boxes"
+              role="group"
+              aria-labelledby="checkbox-group"
+            >
               <Row className="row">
                 <label>
                   <Field type="checkbox" name="checked" value="One" />
