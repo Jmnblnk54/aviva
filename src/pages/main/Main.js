@@ -4,8 +4,8 @@ import Header from "../../components/header/Header";
 import Catches from "../../components/catches/Catches";
 import Footer from "../../components/footer/Footer";
 import backgroundImg from "../../assets/flood1.jpg";
-import ContactForm from "../../components/contactForm/ContactForm";
 import Bullets from "../../components/bullets/Bullets";
+import ContactModal from "../../components/modal/ContactModal";
 
 const Main = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -26,9 +26,6 @@ const Main = () => {
           <div className="bullets-section">
             <Bullets {...{ handleModalClose, handleModalOpen }} />
           </div>
-          <div className="form-section">
-            <ContactForm />
-          </div>
         </div>
         <div className="catches-section">
           <Catches />
@@ -37,6 +34,7 @@ const Main = () => {
       <div className="footer-section">
         <Footer />
       </div>
+      <ContactModal {...{ modalOpen, handleModalClose, handleModalOpen }} />
     </>
   );
 };
