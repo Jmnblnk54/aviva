@@ -8,7 +8,7 @@ const ContactModal = ({ modalOpen, handleModalClose, handleModalOpen }) => {
     <>
       <Modal show={modalOpen} onHide={handleModalClose}>
         <Modal.Header closeButton>
-          <Modal.Title>I am a ...</Modal.Title>
+          {/* <Modal.Title>I am a ...</Modal.Title> */}
         </Modal.Header>
         <ContactForm />
         <Modal.Footer>

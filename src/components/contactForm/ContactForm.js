@@ -1,8 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useFormik, Field, FormikProvider } from "formik";
 import * as yup from "yup";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
+import { Col, Row, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./contactForm.css";
 import emailjs from "@emailjs/browser";
@@ -23,11 +22,19 @@ const validationSchema = yup.object({
 const ContactForm = () => {
   const [phoneValue, setPhoneValue] = useState("");
   const [clientType, setClientType] = useState(0);
+  const [checked, setChecked] = useState(false);
+  const [insuranceCheck, setInsuranceCheck] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [insuranceType, setInsuranceType] = useState();
 
   const form = useRef();
 
   const handleSelect = (e) => {
     setClientType(parseInt(e.target.value));
+  };
+
+  const handleInsuranceSelect = (e) => {
+    setInsuranceType(parseInt(e.target.value));
   };
 
   // function onClick(e) {
@@ -43,6 +50,20 @@ const ContactForm = () => {
   useEffect(() => {
     console.log(clientType);
   }, [clientType]);
+
+  useEffect(() => {
+    if (insuranceCheck) {
+      setIsDisabled(false);
+    }
+  }, [insuranceCheck]);
+
+  const handleCheck = () => {
+    setChecked(!checked);
+  };
+
+  const handleInsuranceCheck = () => {
+    setInsuranceCheck(!insuranceCheck);
+  };
 
   const handleSubmit = (e) => {
     // e.preventDefault();
@@ -78,9 +99,7 @@ const ContactForm = () => {
       checked: [],
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
+    onSubmit: () => console.log("form", form),
   });
 
   return (
@@ -141,7 +160,7 @@ const ContactForm = () => {
                 <PhoneNumberInput />
               </Row>
             </div>
-            <ReCAPTCHA siteKey="6LcPrjwoAAAAAKYoIQQ8WmhNO-awerPB7UUXghNH" />
+            <ReCAPTCHA sitekey="6Lf5h1UoAAAAAPADDrd50tMLt0CaF79OY7tiBkIB" />
 
             <div
               className="check-boxes"
@@ -149,26 +168,77 @@ const ContactForm = () => {
               aria-labelledby="checkbox-group"
             >
               <Row className="row">
-                <label>
-                  <Field type="checkbox" name="checked" value="One" />
-                  My property suffered damages from Hurricane Idalia.
-                </label>
+                <Col>
+                  <h4>Please select the type of damage your property has:</h4>
+                </Col>
+                <Col sm={1}>
+                  <Form.Check
+                    onChange={handleCheck}
+                    type="checkbox"
+                    name="property"
+                    value="One"
+                  />
+                </Col>
+                <Col sm={11}>Wind or Roof Damage </Col>
               </Row>
               <Row className="row">
-                <label>
-                  <Field type="checkbox" name="checked" value="Two" />
-                  My house was flooded from Hurricane Idalia.
-                </label>
+                <Col>
+                  <Form.Check
+                    onChange={handleCheck}
+                    type="checkbox"
+                    name="flooded"
+                    value="Two"
+                  />
+                </Col>
+                <Col>Flood Damage </Col>
               </Row>
               <Row className="row">
-                <label>
-                  <Field type="checkbox" name="checked" value="Three" />
-                  My roof is leaking or damaged from Hurricane Idalia.
-                </label>
+                <Col>
+                  <Form.Check
+                    onChange={handleCheck}
+                    type="checkbox"
+                    name="roof"
+                    value="Three"
+                  />
+                </Col>
+                <Col>Both Wind/Roof and Flood Damage</Col>
               </Row>
             </div>
-            <ReCAPTCHA siteKey="6LcPrjwoAAAAAKYoIQQ8WmhNO-awerPB7UUXghNH" />
-            <Button className="submit-button" variant="danger" type="submit">
+            {checked && (
+              <div className="insurance">
+                <Row className="row">
+                  <Col>
+                    <Form.Check
+                      onChange={handleInsuranceCheck}
+                      type="checkbox"
+                      name="insurance"
+                      value="insured"
+                    />
+                  </Col>
+                  <Col>I have insurance.</Col>
+                </Row>
+                {insuranceCheck && (
+                  <div className="insurance-select">
+                    <Form.Select
+                      onChange={handleInsuranceSelect}
+                      aria-label="Default select example"
+                    >
+                      <option value={0}>Wind Insurance</option>
+                      <option value={1}>Flood Insurance</option>
+                      <option value={2}>Both</option>
+                    </Form.Select>
+                  </div>
+                )}
+              </div>
+            )}
+
+            <ReCAPTCHA sitekey="6Lf5h1UoAAAAAPADDrd50tMLt0CaF79OY7tiBkIB" />
+            <Button
+              disabled={isDisabled}
+              className="submit-button"
+              variant="danger"
+              type="submit"
+            >
               Submit
             </Button>
           </form>

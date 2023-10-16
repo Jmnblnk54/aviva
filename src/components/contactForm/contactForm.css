@@ -4,6 +4,7 @@
   flex-direction: column;
   border: 1px solid #800b0b;
   height: 100%;
+  justify-content: center;
 }
 
 form {
@@ -28,9 +29,11 @@ form {
 }
 
 .form-main {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
   width: 300px;
-  background-color: red;
-  float: left;
+  /* background-color: red; */
 }
 
 .row-group1 {
