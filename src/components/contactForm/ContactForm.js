@@ -22,10 +22,13 @@ const validationSchema = yup.object({
 const ContactForm = () => {
   const [phoneValue, setPhoneValue] = useState("");
   const [clientType, setClientType] = useState(0);
-  const [checked, setChecked] = useState(false);
+  const [floodChecked, setFloodChecked] = useState(false);
+  const [windChecked, setWindChecked] = useState(false);
+  const [bothChecked, setBothChecked] = useState(false);
   const [insuranceCheck, setInsuranceCheck] = useState(false);
   const [isDisabled, setIsDisabled] = useState(true);
   const [insuranceType, setInsuranceType] = useState();
+  const [showInsuranceSelect, setShowInsuranceSelect] = useState(false);
 
   const form = useRef();
 
@@ -37,6 +40,12 @@ const ContactForm = () => {
     setInsuranceType(parseInt(e.target.value));
   };
 
+  useEffect(() => {
+    if (floodChecked || windChecked || bothChecked) {
+      setShowInsuranceSelect(true);
+    } else setShowInsuranceSelect(false);
+  }, [floodChecked, windChecked, bothChecked]);
+
   // function onClick(e) {
   //   e.preventDefault();
   //   grecaptcha.enterprise.ready(async () => {
@@ -47,19 +56,15 @@ const ContactForm = () => {
   //   });
   // }
 
-  useEffect(() => {
-    console.log(clientType);
-  }, [clientType]);
+  // useEffect(() => {
+  //   console.log(clientType);
+  // }, [clientType]);
 
   useEffect(() => {
     if (insuranceCheck) {
       setIsDisabled(false);
     }
   }, [insuranceCheck]);
-
-  const handleCheck = () => {
-    setChecked(!checked);
-  };
 
   const handleInsuranceCheck = () => {
     setInsuranceCheck(!insuranceCheck);
@@ -116,9 +121,9 @@ const ContactForm = () => {
           </Form.Select>
         </div>
         {clientType === 0 && (
-          <div className="none-selected">
+          <Row className="none-selected">
             <h6>Please Select Your Housing Situation</h6>
-          </div>
+          </Row>
         )}
         {clientType === 1 && (
           <div className="renter">
@@ -171,9 +176,11 @@ const ContactForm = () => {
                 <Col>
                   <h4>Please select the type of damage your property has:</h4>
                 </Col>
+              </Row>
+              <Row>
                 <Col sm={1}>
                   <Form.Check
-                    onChange={handleCheck}
+                    onChange={() => setWindChecked(true)}
                     type="checkbox"
                     name="property"
                     value="One"
@@ -182,9 +189,9 @@ const ContactForm = () => {
                 <Col sm={11}>Wind or Roof Damage </Col>
               </Row>
               <Row className="row">
-                <Col>
+                <Col sm={1}>
                   <Form.Check
-                    onChange={handleCheck}
+                    onChange={() => setFloodChecked(true)}
                     type="checkbox"
                     name="flooded"
                     value="Two"
@@ -193,9 +200,9 @@ const ContactForm = () => {
                 <Col>Flood Damage </Col>
               </Row>
               <Row className="row">
-                <Col>
+                <Col sm={1}>
                   <Form.Check
-                    onChange={handleCheck}
+                    onChange={() => setBothChecked(true)}
                     type="checkbox"
                     name="roof"
                     value="Three"
@@ -204,12 +211,12 @@ const ContactForm = () => {
                 <Col>Both Wind/Roof and Flood Damage</Col>
               </Row>
             </div>
-            {checked && (
+            {showInsuranceSelect && (
               <div className="insurance">
                 <Row className="row">
-                  <Col>
+                  <Col sm={1}>
                     <Form.Check
-                      onChange={handleInsuranceCheck}
+                      onChange={() => handleInsuranceCheck()}
                       type="checkbox"
                       name="insurance"
                       value="insured"
@@ -217,8 +224,9 @@ const ContactForm = () => {
                   </Col>
                   <Col>I have insurance.</Col>
                 </Row>
-                {insuranceCheck && (
+                {showInsuranceSelect && (
                   <div className="insurance-select">
+                    <hr />
                     <Form.Select
                       onChange={handleInsuranceSelect}
                       aria-label="Default select example"
